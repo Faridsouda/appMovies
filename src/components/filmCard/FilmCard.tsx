@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FilmCardStyled } from "./FilmCardStyled";
 import { ImgCardStyled } from "./ImgCardStyled";
 import { H3CenterStyled } from "../titres/H3CenterStyled";
@@ -6,6 +7,7 @@ import { PDescriptionFilm } from "../titres/PDescriptionCenterFilm";
 import { InfoFilm } from "../../modules/homePage/HomePage";
 import convertDate from "../../outils/convertDate";
 import Rating from "../rating/Rating";
+import { DivStyled } from "../div/DivStyled";
 
 interface Props {
   film: InfoFilm;
@@ -14,14 +16,25 @@ interface Props {
 const FilmCard: React.FC<Props> = ({ film }) => {
   const { id, title, backdrop_path, vote_average, popularity, release_date } =
     film;
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/filmDetails/${id}`);
+  };
+
   console.log(vote_average);
+
   return (
     <>
       <FilmCardStyled>
-        <ImgCardStyled
-          src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
-          alt={title}
-        />
+        <DivStyled onClick={handleClick}>
+          <ImgCardStyled
+            onClick={handleClick}
+            src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
+            alt={title}
+          />
+        </DivStyled>
 
         <H3CenterStyled>{title}</H3CenterStyled>
         {/* <Rating notation={Math.round(vote_average)} /> */}
