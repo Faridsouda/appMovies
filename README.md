@@ -4,6 +4,6 @@ Une application react pour récupérer les données des films chez le service ap
 
 Technologies:
 
-React js
-Typescript
+React js,
+Typescript,
 Style-component, Style-system
