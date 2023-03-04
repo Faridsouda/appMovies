@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import { typography } from "styled-system";
+import { typography, layout, space } from "styled-system";
 
 export const PStyled = styled.p`
-  ${typography}
+  ${typography};
+  ${layout};
+  ${space}
 `;
